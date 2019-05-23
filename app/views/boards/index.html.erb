@@ -5,8 +5,7 @@
     <hr>
     <ul>
       <% @boards.each do |board| %>
-        <li><%= board.title %></li>
-        <%= link_to "View Board", board_path(board), class: "ui button"%> 
+        <li><%= link_to board.title, board_path(board), class: "ui green button" %></li>
       <% end %>
     </ul>
   <% end %>
