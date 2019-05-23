@@ -1,3 +1,5 @@
 <h1>Showing <%= @board.title %></h1>
 <hr>
 <p>Will show LISTS index here.</p>
+
+<%= link_to "Delete Board", board_path(@board), method: :delete, class: "ui button red"%>

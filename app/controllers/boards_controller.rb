@@ -15,6 +15,7 @@ class BoardsController < ApplicationController
 
   def create
     @board = Board.create_board(current_user.id, board_params)
+    redirect_to boards_path
   end
 
   def edit
@@ -28,6 +29,10 @@ class BoardsController < ApplicationController
 
   private def set_board
     @board = Board.single_board(current_user.id, params[:id])
+  end
+
+  def board_params
+    params.require(:board).permit(:title)
   end
 
 end
