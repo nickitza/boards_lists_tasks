@@ -10,9 +10,11 @@ class BoardsController < ApplicationController
   end
 
   def new
+    @board = current_user.boards.new()
   end
 
   def create
+    @board = Board.create_board(current_user.id, board_params)
   end
 
   def edit
