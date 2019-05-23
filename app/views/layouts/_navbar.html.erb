@@ -1,0 +1,12 @@
+
+<div class="ui secondary menu">
+  <i class="huge green clipboard outline icon"></i>
+
+  <% if current_user %>
+    <%= link_to "All Boards", boards_path, class: "item" %>
+    <%= link_to "Add New Board", new_board_path, class: "item" %>
+    <div class="right menu">
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"item" %>
+    </div>
+  <% end %>
+</div>

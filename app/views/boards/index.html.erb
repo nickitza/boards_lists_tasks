@@ -1,2 +1,13 @@
-<h1>Boards#index</h1>
-<p>Find me in app/views/boards/index.html.erb</p>
+
+<h1><%= @boards.length > 0 ? "All Boards" : "You have no boards."%>
+<%if @boards.length == 0%>
+<i class="large frown outline icon"></i></h1>
+<% else %>
+<hr>
+<ul>
+  <% @boards.each do |board| %>
+    <li><%= board.name %></li>
+    <%= link_to "View Board", board_path(board), class: "ui button"%> 
+  <% end %>
+  <% end %>
+</ul>
