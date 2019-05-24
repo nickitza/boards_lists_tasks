@@ -10,7 +10,8 @@
           <h1 class="header"><%= board.title %></h1>
     </div>
     <div class="extra content">
-      <%= link_to "View Board", board_path(board), class:"ui tiny button primary inverted" %>
+      <%= link_to "View Board", board_path(board), class:"ui tiny button green inverted" %>
+      <%= link_to "Edit Board", edit_board_path(board), class:"ui tiny button secondary inverted" %>
     </div>
   </div>
     <% end %>

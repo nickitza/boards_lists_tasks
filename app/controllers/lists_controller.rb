@@ -10,9 +10,25 @@ class ListsController < ApplicationController
   end
 
   def new
+    @list = @board.lists.new()
+  end
+
+  def create
+    @list = @board.lists.new(list_params)
+    if @list.save
+      redirect_to board_list_path(@board, @list)
+    else 
+      render :new
+    end
   end
 
   def edit
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
   private
