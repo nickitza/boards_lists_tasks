@@ -1,11 +1,19 @@
-<h1><%= @boards.length > 0 ? "All Boards" : "You don't have any boards."%>
+<h1 class ="header"><%= @boards.length > 0 ? "All Boards" : "You don't have any boards."%>
   <%if @boards.length == 0%>
-    <i class="large frown outline icon"></i></h1>
-  <% else %>
-    <hr>
-    <ul>
-      <% @boards.each do |board| %>
-        <li><%= link_to board.title, board_path(board), class: "ui green button" %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <i class="large frown outline icon"></i></h1>
+    <% else %>
+  <hr>
+  <div class = "ui cards">
+<% @boards.each do |board| %>
+  <div class="ui card">
+    <div class="content">
+          <h1 class="header"><%= board.title %></h1>
+    </div>
+    <div class="extra content">
+      <%= link_to "View Board", board_path(board), class:"ui tiny button primary inverted" %>
+    </div>
+  </div>
+    <% end %>
+  </div>
+    <% end %>
+        <%# <ul style="list-style: none;"> %>

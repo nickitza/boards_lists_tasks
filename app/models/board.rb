@@ -33,4 +33,12 @@ class Board < ApplicationRecord
       ])
   end
 
+  def self.update_board(board_id, board_params)
+    Board.find_by_sql (["
+      UPDATE boards
+      SET title = ?, updated_at = ?
+      WHERE boards.id = ?
+      ", board_params[:title], DateTime.now, board_id])
+    end
+
 end

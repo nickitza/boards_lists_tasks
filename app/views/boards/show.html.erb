@@ -1,5 +1,25 @@
-<h1>Showing <%= @board.title %></h1>
-<hr>
-<p>Will show LISTS index here.</p>
-
-<%= link_to "Delete Board", board_path(@board), method: :delete, class: "ui button red"%>
+<div class="ui card">
+  <div class="content">
+    <h1 class ="header"><%= @board.title %></h1>
+  </div>
+  <div class="content">
+    <h3 class="ui sub header"><%= link_to "Lists", board_lists_path(@board)%></h3>
+    <div class="ui small feed">
+      <div class="event">
+        <div class="content">
+          <div class="summary">
+            <ul>
+              <% @board.lists.each do |list| %>
+                <li><%= list.title %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="extra content">
+    <%= link_to "Edit Board", edit_board_path(@board), class: "ui mini button secondary inverted"%>
+    <%= link_to "Delete Board", board_path(@board), method: :delete, class: "ui mini button red inverted"%>
+  </div>
+</div>
