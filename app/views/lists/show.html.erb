@@ -4,13 +4,15 @@
     <span class="right floated time"><%= link_to "Back To Lists", board_lists_path(@board) %></span>
   </div>
   <div class="content">
-    <h3 class="ui sub header"><%= "View/Add Tasks (Link)" %></h3>
+    <h3 class="ui sub header"><%= link_to "Tasks", list_tasks_path(@list) %></h3>
     <div class="ui small feed">
       <div class="event">
         <div class="content">
           <div class="summary">
             <ul>
-              Loop through tasks here 
+              <% @list.tasks.each do |task|%>
+                <%= task.title %>
+              <% end %> 
             </ul>
           </div>
         </div>
@@ -23,6 +25,6 @@
   </div>
   <div class="ui bottom attached button">
     <i class="add green icon"></i>
-    <%= "View or Add Tasks" %>
+    <%= link_to "View or Add Tasks", list_tasks_path(@list) %>
   </div>
 </div>
