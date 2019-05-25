@@ -1,9 +1,10 @@
 <div class="ui card">
   <div class="content">
-    <h1 class ="header"><%= @board.title %></h1>
+    <h1 class ="header"><%= @board.title.upcase %></h1>
+    <span class="right floated time"><%= link_to "Back To Boards", boards_path %></span>
   </div>
   <div class="content">
-    <h3 class="ui sub header"><%= link_to "View Lists", board_lists_path(@board)%></h3>
+    <h3 class="ui sub header"><span><i class="plus large green circle icon"></i></span><%= link_to "Lists", board_lists_path(@board)%></h3>
     <div class="ui small feed">
       <div class="event">
         <div class="content">
@@ -21,5 +22,9 @@
   <div class="extra content">
     <%= link_to "Edit Board", edit_board_path(@board), class: "ui mini button secondary inverted"%>
     <%= link_to "Delete Board", board_path(@board), method: :delete, class: "ui mini button red inverted"%>
+  </div>
+  <div class="ui bottom attached button">
+    <i class="add green icon"></i>
+    <%= link_to "View or Add Lists", board_lists_path(@board)%>
   </div>
 </div>

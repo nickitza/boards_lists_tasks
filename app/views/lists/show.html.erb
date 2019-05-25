@@ -1,2 +1,28 @@
-<h1>Lists#show</h1>
-<p>Tasks Index will show here</p>
+<div class="ui card">
+  <div class="content">
+    <h1 class ="header"><%= @list.title.upcase %></h1>
+    <span class="right floated time"><%= link_to "Back To Lists", board_lists_path(@board) %></span>
+  </div>
+  <div class="content">
+    <h3 class="ui sub header"><%= "View/Add Tasks (Link)" %></h3>
+    <div class="ui small feed">
+      <div class="event">
+        <div class="content">
+          <div class="summary">
+            <ul>
+              Loop through tasks here 
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="extra content">
+    <%= link_to "Edit List", edit_board_list_path(@board, @list), class: "ui mini button secondary inverted"%>
+    <%= link_to "Delete List", board_list_path(@board, @list), method: :delete, class: "ui mini button red inverted"%>
+  </div>
+  <div class="ui bottom attached button">
+    <i class="add green icon"></i>
+    <%= "View or Add Tasks" %>
+  </div>
+</div>
