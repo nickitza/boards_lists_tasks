@@ -1,8 +1,10 @@
-<h1 class ="header"><%= @boards.length > 0 ? "All Boards" : "You don't have any boards."%>
-  <%if @boards.length == 0%></h1>
-<h4>Click "Add New Board" to get started on your journey of productivity!</h4>
+<%if @boards.length == 0%>
+<h1 class = "header">Welcome <%= current_user.full_name%>!</h1>
+<h3>You don't have any boards!</h3>
+<h4><%=link_to "Add a new board", new_board_path%> to get started on your journey of productivity!</h4>
     <% else %>
   <hr>
+  <h1 class = "header"> Viewing All Boards </h1>
   <div class = "ui cards">
 <% @boards.each do |board| %>
   <div class="ui card">
