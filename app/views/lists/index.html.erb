@@ -1,16 +1,11 @@
-<h1 class ="header"><%= @board.lists.length > 0 ? "All Lists " : "You don't have any lists."%>
-  <%if @board.lists.length == 0%>
-    <i class="large frown outline icon"></i></h1>
-    <div>
-      <%= link_to "New List", new_board_list_path(@board), class: "ui button green inverted"%>
-      <%= link_to "Back To Boards", boards_path, class: "ui button secondary inverted"%>
-    </div>
-    <% else %>
-      <div>
-      <%= link_to "Add Another List", new_board_list_path(@board), class: "ui button green inverted"%>
-      <%= link_to "Back To Boards", boards_path, class: "ui button secondary inverted"%>
-      </div>
-
+<% if @board.lists.length == 0 %>
+  <h1>You have no lists.</h1>
+  <%= link_to "New List", new_board_list_path(@board), class: "ui button green inverted"%>
+  <%= link_to "Back To Boards", boards_path, class: "ui button secondary inverted"%>
+<% else %>
+  <h1>Showing Lists for Board: <%= @board.title %> </h1>
+  <%= link_to "Add Another Lists", new_board_list_path(@board), class: "ui button green inverted" %>
+  <%= link_to "Back To Boards", boards_path, class: "ui button secondary inverted" %>
     <hr>
     <div class = "ui cards">
       <% @board.lists.each do |list| %>
@@ -19,12 +14,12 @@
             <h1 class ="header">
               <%= list.title.upcase %>
             </h1>
- 
           </div>
 
           <div class="content">
-            <span><i class="plus small green circle icon"></i></span>
+            <div class = "ui sub header">
             Tasks
+            </div>
             <div class="ui small feed">
               <div class="summary">
                 <ul>

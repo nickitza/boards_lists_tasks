@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'semantic-ui-sass'
-
+gem 'colorize'
 group :development, :test do
   gem 'pry'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'

@@ -14,6 +14,11 @@ class TasksController < ApplicationController
   end
 
   def update
+    if @task.update(task_params)
+      redirect_to list_tasks_path(@list)
+    else
+      render :edit
+    end
   end
 
   def new
@@ -31,6 +36,8 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task.destroy
+    redirect_to list_tasks_path(@list)
   end
 
   private
