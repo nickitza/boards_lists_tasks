@@ -1,2 +1,38 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<% if @list.tasks.length == 0 %>
+  <h1>You have no tasks.</h1>
+  <%= link_to "New Task", new_list_task_path(@list), class: "ui button green inverted"%>
+  <%= link_to "Back To Lists", board_lists_path(@list.board_id), class: "ui button secondary inverted"%>
+<% else %>
+  <h1>Showing tasks for List: <%= @list.title %> </h1>
+  <%= link_to "Add Another Task", new_list_task_path(@list), class: "ui button green inverted" %>
+  <%= link_to "Back To Boards", boards_path, class: "ui button secondary inverted" %>
+  <hr>
+  <div class = "ui cards">
+  <% @tasks.each do |task| %>
+    <div class="ui card">
+      <div class="content">
+        <h1 class ="header"><%= task.title.upcase %></h1>
+        <% if task.priority = 'High'%>
+        <%= "High Priority" %>
+        <span class="right floated time">Back To Lists</span>
+      </div>
+      <div class="content">
+        <div class="ui small feed">
+            <div class="content">
+              <div class="description">
+                <%= task.description %>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="extra content">
+      <h5 class = "ui mini button secondary inverted"> "Edit Task" </h5>
+      <h5 class = "ui mini button secondary inverted"> "Complete Task" </h5>
+      </div>
+      <div class="ui bottom attached button">
+        <i class="add green icon"></i>
+        <%= "Mark Task As Complete"%>
+      </div>
+    </div>
+  <% end %>
+<% end %>

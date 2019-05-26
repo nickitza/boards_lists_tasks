@@ -1,6 +1,6 @@
 class Board < ApplicationRecord
   belongs_to :user
-  has_many :lists
+  has_many :lists, dependent: :destroy
   validates_presence_of :title
 
   # === CLASS METHODS =====
@@ -41,5 +41,11 @@ class Board < ApplicationRecord
       WHERE boards.id = ?
       ", board_params[:title], DateTime.now, board_id])
     end
-
+    
+  def self.delete_board(board_id)
+    Board.find_by_sql(["
+      DELETE FROM boards
+      WHERE board.id = ?;
+    ", board_id])
+  end 
 end

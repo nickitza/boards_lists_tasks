@@ -10,21 +10,31 @@ class TasksController < ApplicationController
   end
 
   def edit
+    render :edit
   end
 
   def update
   end
 
   def new
+    @task = @list.tasks.new()
+    render :new
   end
 
   def create
+    @task = @list.tasks.new(task_params)
+    if @task.save
+      redirect_to list_tasks_path(@list)
+    else
+      render :new
+    end
   end
 
   def destroy
   end
 
   private
+  
   def set_list
     @list = List.find(params[:list_id])
   end

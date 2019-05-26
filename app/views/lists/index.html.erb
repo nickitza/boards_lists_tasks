@@ -1,25 +1,51 @@
 <h1 class ="header"><%= @board.lists.length > 0 ? "All Lists " : "You don't have any lists."%>
   <%if @board.lists.length == 0%>
     <i class="large frown outline icon"></i></h1>
-    <div><%= link_to "New List", new_board_list_path(@board), class: "ui button green inverted"%>
-    <%= link_to "Back To Board", board_path(@board), class: "ui button secondary inverted"%></div>
-  <% else %>
-    <div><%= link_to "New List", new_board_list_path(@board), class: "ui button green inverted"%>
-    <%= link_to "Back To Board", board_path(@board), class: "ui button secondary inverted"%></div>
+    <div>
+      <%= link_to "New List", new_board_list_path(@board), class: "ui button green inverted"%>
+      <%= link_to "Back To Boards", boards_path, class: "ui button secondary inverted"%>
+    </div>
+    <% else %>
+      <div>
+      <%= link_to "Add Another List", new_board_list_path(@board), class: "ui button green inverted"%>
+      <%= link_to "Back To Boards", boards_path, class: "ui button secondary inverted"%>
+      </div>
 
-  <hr>
-  <div class = "ui cards">
-<% @board.lists.each do |list| %>
-  <div class="ui card">
-    <div class="content">
-          <h1 class="header"><%= list.title %></h1>
+    <hr>
+    <div class = "ui cards">
+      <% @board.lists.each do |list| %>
+        <div class="ui card">
+          <div class="content">
+            <h1 class ="header">
+              <%= list.title.upcase %>
+            </h1>
+ 
+          </div>
+
+          <div class="content">
+            <span><i class="plus small green circle icon"></i></span>
+            Tasks
+            <div class="ui small feed">
+              <div class="summary">
+                <ul>
+                  <% list.tasks.each do |task| %>
+                    <li><%= task.title %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="extra content">
+            <%= link_to "View Tasks", list_tasks_path(list), class: "ui mini button green inverted"%>
+            <%= link_to "Edit List", edit_board_list_path(@board, list), class: "ui mini button secondary inverted"%>
+            <%= link_to "Delete List", board_list_path(@board, list), method: :delete, class: "ui mini button red inverted"%>
+          </div>
+          <div class="ui bottom attached button">
+            <i class="add green icon"></i>
+            <%= link_to "View or Add Tasks", list_tasks_path(list)%>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <div class="extra content">
-      <%= link_to "View List", board_list_path(@board, list), class:"ui tiny button green inverted" %>
-      <%= link_to "Edit List", edit_board_list_path(@board, list), class:"ui tiny button secondary inverted" %>
-    </div>
-  </div>
-    <% end %>
-  </div>
-    <% end %>
-        <%# <ul style="list-style: none;"> %>
+  <% end %>

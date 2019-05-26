@@ -23,10 +23,12 @@ class BoardsController < ApplicationController
 
   def update
     Board.update_board(@board.id, board_params)
-    redirect_to board_path(@board)
+    redirect_to boards_path
   end
 
   def destroy
+    Board.delete_board(@board.id)
+    redirect_to boards_path
   end
 
   private def set_board

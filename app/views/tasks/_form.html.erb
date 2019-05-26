@@ -1,0 +1,18 @@
+<%= form_with(model: [@list, @task], local: true, class: "ui form") do |f| %>
+  <div class = "field">
+    <%= f.label :title %>
+    <%= f.text_field :title, required: true, autofocus: true, class: "input" %>
+  </div>
+  
+  <div class = "field">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "input" %>
+  </div>
+
+  <div class = "field">
+    <%= f.label :priority %>
+    <%= f.select :priority, ['Low', 'Medium', 'High'] %>
+  </div>
+
+  <%= f.submit nil, class: "ui button green inverted"%>
+  <% end %>
