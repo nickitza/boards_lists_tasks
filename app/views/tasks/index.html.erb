@@ -1,45 +1,50 @@
-<% if @list.tasks.length == 0 %>
-  <h1>You have no tasks.</h1>
-  <%= link_to "New Task", new_list_task_path(@list), class: "ui button green inverted"%>
-  <%= link_to "Back To Lists", board_lists_path(@list.board_id), class: "ui button secondary inverted"%>
-<% else %>
-  <h1>Showing Tasks for List: <%= @list.title %> </h1>
-  <%= link_to "Add Another Task", new_list_task_path(@list), class: "ui button green inverted" %>
-  <%= link_to "Back To Lists", board_lists_path(@list.board_id), class: "ui button secondary inverted" %>
+  <% if @list.tasks.length == 0 %>
+    <h1>You have no tasks.</h1>
+    <%= link_to "New Task", new_list_task_path(@list), class: "ui button green inverted"%>
+    <%= link_to "Back To Lists", board_lists_path(@list.board_id), class: "ui button secondary inverted"%>
+  <% else %>
+    <h1>Showing Tasks for List: <%= @list.title %> </h1>
+    <%= link_to "Add Another Task", new_list_task_path(@list), class: "ui button green inverted" %>
+    <%= link_to "Back To Lists", board_lists_path(@list.board_id), class: "ui button secondary inverted" %>
   <hr>
-  <div class = "ui four cards">
-  <% @tasks.each do |task| %>
-    <div class="ui card">
-      <div class="content">
-        <h1 class ="header"><%= task.title.upcase %></h1>
-        
-        <% if task.priority == "High"%>
-          <h5 class = "red"> High Priority </h5>
-        <%elsif task.priority == "Medium"%>
-          <h5 class = "orange"> Medium Priority </h5>
-        <%else task.priority == "Low" %>
-          <h5 class = "green"> Low Priority </h5>
-        <% end %>
+  <div class = "ui cards">
+    <% @tasks.each do |task| %>
+        <div class="ui card">
+          <div class="content">
+            <h1 class ="header">
+            <%= task.title.upcase %>
+            </h1>
+            
+            <% if task.priority == "High"%>
+              <h5 class = "red"> High Priority </h5>
+            <%elsif task.priority == "Medium"%>
+              <h5 class = "orange"> Medium Priority </h5>
+            <%else task.priority == "Low" %>
+              <h5 class = "green"> Low Priority </h5>
+            <% end %>
 
-        <%= link_to "Back To Lists", board_lists_path(@list.board_id)%>
-      </div>
-      <div class="content">
-        <div class="ui small feed">
-            <div class="content">
-              <div class="description">
-                <%= task.description %>
-              </div>
+            <%= link_to "Back To Lists", board_lists_path(@list.board_id)%>
+          </div>
+
+          <div class="content">
+            <div class="ui small feed">
+                <div class="content">
+                  <div class="description">
+                    <%= task.description %>
+                  </div>
+                </div>
             </div>
+          </div>
+          <div class="extra content">
+          <%= link_to "Edit Task", edit_list_task_path(@list, task), class: "ui mini button secondary inverted" %>
+          <%= link_to "Delete Task", list_task_path(@list, task), method: :delete, class: "ui mini button red inverted" %>
+          </div>
+          <div class="ui bottom attached button">
+          <i class="check green circle outline icon"></i>
+            <%= link_to "Mark Task As Complete", list_task_path(@list, task), method: :delete%>
+          </div>
         </div>
-      </div>
-      <div class="extra content">
-      <%= link_to "Edit Task", edit_list_task_path(@list, task), class: "ui mini button secondary inverted" %>
-      <%= link_to "Delete Task", list_task_path(@list, task), method: :delete, class: "ui mini button red inverted" %>
-      </div>
-      <div class="ui bottom attached button">
-      <i class="check green circle outline icon"></i>
-        <%= "Mark Task As Complete"%>
-      </div>
-    </div>
-  <% end %>
+       </div>
+    <% end %>
+  </div>
 <% end %>

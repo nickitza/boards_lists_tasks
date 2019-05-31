@@ -45,7 +45,7 @@ class Board < ApplicationRecord
   def self.delete_board(board_id)
     Board.find_by_sql(["
       DELETE FROM boards
-      WHERE board.id = ?;
+      WHERE boards.id = ?;
     ", board_id])
   end 
 end

@@ -4,7 +4,7 @@
   <%= link_to "Back To Boards", boards_path, class: "ui button secondary inverted"%>
 <% else %>
   <h1>Showing Lists for Board: <%= @board.title %> </h1>
-  <%= link_to "Add Another Lists", new_board_list_path(@board), class: "ui button green inverted" %>
+  <%= link_to "Add Another List", new_board_list_path(@board), class: "ui button green inverted" %>
   <%= link_to "Back To Boards", boards_path, class: "ui button secondary inverted" %>
     <hr>
     <div class = "ui cards">

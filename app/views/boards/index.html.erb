@@ -14,9 +14,10 @@
     <div class="extra content">
       <%= link_to "View Board", board_lists_path(board), class:"ui tiny button green inverted" %>
       <%= link_to "Edit Board", edit_board_path(board), class:"ui tiny button secondary inverted" %>
+      <%= link_to "Delete Board", board_path(board), method: :delete, class:"ui tiny button red inverted" %>
     </div>
   </div>
     <% end %>
-  </div>
+  </div>    
     <% end %>
         <%# <ul style="list-style: none;"> %>
